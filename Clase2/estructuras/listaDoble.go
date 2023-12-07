@@ -129,3 +129,29 @@ func (l *ListaDoble) Reporte() {
 	escribirArchivo(texto, nombreArchivo)
 	ejecutar(nombreImagen, nombreArchivo)
 }
+
+func (l *ListaDoble) Reportev2() {
+	nombreArchivo := "./listadoblecircular.dot"
+	nombreImagen := "./listadoblecircular.jpg"
+	texto := "digraph lista{\n"
+	texto += "rankdir=LR;\n"
+	texto += "node[shape = record];\n"
+	aux := l.Inicio
+	contador := 0
+	for i := 0; i < l.Longitud; i++ {
+		texto += "nodo" + strconv.Itoa(i) + "[label=\"" + strconv.Itoa(aux.Alumno.Carnet) + "\"];\n"
+		aux = aux.Siguiente
+	}
+	for i := 0; i < l.Longitud-1; i++ {
+		c := i + 1
+		texto += "nodo" + strconv.Itoa(i) + "->nodo" + strconv.Itoa(c) + ";\n"
+		texto += "nodo" + strconv.Itoa(c) + "->nodo" + strconv.Itoa(i) + ";\n"
+		contador = c
+	}
+	texto += "nodo" + strconv.Itoa(contador) + "->nodo0 \n"
+	texto += "nodo0 -> " + "nodo" + strconv.Itoa(contador) + "\n"
+	texto += "}"
+	crearArchivo(nombreArchivo)
+	escribirArchivo(texto, nombreArchivo)
+	ejecutar(nombreImagen, nombreArchivo)
+}

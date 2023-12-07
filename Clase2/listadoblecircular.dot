@@ -1,9 +1,6 @@
 digraph lista{
 rankdir=LR;
 node[shape = record];
-nodonull1[label="null"];
-nodonull2[label="null"];
-nodonull1->nodo0 [dir=back];
 nodo0[label="202110509"];
 nodo1[label="202110553"];
 nodo2[label="202111563"];
@@ -17,15 +14,6 @@ nodo2->nodo3;
 nodo3->nodo2;
 nodo3->nodo4;
 nodo4->nodo3;
-nodo4->nodonull2;
-}ejandro Agosto Méndez"];
-nodo0->nodo1;
-nodo1->nodo0;
-nodo1->nodo2;
-nodo2->nodo1;
-nodo2->nodo3;
-nodo3->nodo2;
-nodo3->nodo4;
-nodo4->nodo3;
-nodo4->nodonull2;
+nodo4->nodo0 
+nodo0 -> nodo4
 }
