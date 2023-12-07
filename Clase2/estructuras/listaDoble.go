@@ -1,6 +1,9 @@
 package estructuras
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 type ListaDoble struct {
 	Inicio   *NodoListaDoble
@@ -25,7 +28,7 @@ func (l *ListaDoble) Agregar(carnet int, nombre string) {
 	}
 }
 
-//Funcion de Agregar para una Lista Circular Doblemente Enlazada
+// Funcion de Agregar para una Lista Circular Doblemente Enlazada
 func (l *ListaDoble) AgregarOrdenado(carnet int, nombre string) {
 	nuevoAlumno := &Alumno{Carnet: carnet, Nombre: nombre}
 	nuevoNodo := &NodoListaDoble{Alumno: nuevoAlumno, Siguiente: nil, Anterior: nil}
@@ -97,4 +100,32 @@ func (l *ListaDoble) MostrarV1() {
 		contador++
 	}
 
+}
+
+func (l *ListaDoble) Reporte() {
+	nombreArchivo := "./listadoble.dot"
+	nombreImagen := "./listadoble.jpg"
+	texto := "digraph lista{\n"
+	texto += "rankdir=LR;\n"
+	texto += "node[shape = record];\n"
+	texto += "nodonull1[label=\"null\"];\n"
+	texto += "nodonull2[label=\"null\"];\n"
+	aux := l.Inicio
+	contador := 0
+	texto += "nodonull1->nodo0 [dir=back];\n"
+	for i := 0; i < l.Longitud; i++ {
+		texto += "nodo" + strconv.Itoa(i) + "[label=\"" + strconv.Itoa(aux.Alumno.Carnet) + "\"];\n"
+		aux = aux.Siguiente
+	}
+	for i := 0; i < l.Longitud-1; i++ {
+		c := i + 1
+		texto += "nodo" + strconv.Itoa(i) + "->nodo" + strconv.Itoa(c) + ";\n"
+		texto += "nodo" + strconv.Itoa(c) + "->nodo" + strconv.Itoa(i) + ";\n"
+		contador = c
+	}
+	texto += "nodo" + strconv.Itoa(contador) + "->nodonull2;\n"
+	texto += "}"
+	crearArchivo(nombreArchivo)
+	escribirArchivo(texto, nombreArchivo)
+	ejecutar(nombreImagen, nombreArchivo)
 }

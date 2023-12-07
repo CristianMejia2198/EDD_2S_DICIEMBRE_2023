@@ -26,4 +26,5 @@ func main() {
 	lista.Mostrar()
 	fmt.Println(factorialIterativo(5))
 	fmt.Println(factorialRecursivo(5))
+	lista.Reporte()
 }
