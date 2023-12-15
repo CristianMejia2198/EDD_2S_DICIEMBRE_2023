@@ -1,0 +1,12 @@
+Inicio Sesion
+    Cambiar a ADMIN_#carnet y password admin 
+Administrador
+Cambiar los menus para que soliciten el nombre del archivo
+    1. Cambiar las condiciones de la cola de prioridad
+    2. No hay cambios (excecpto el general)
+    3. No hay cambios (excepto el general)
+    4. Comprobar si en la lista ya existe 1 alumno tutor para el curso, comprobar las notas de ambos, quien tengan mayor nota, se queda
+        4.1 0772 -> tutor1 -> 75
+        4.2 El siguiente tambien va para 0772 -> tutor20 -> 95
+    5. Mandar a llamar los reportes.
+

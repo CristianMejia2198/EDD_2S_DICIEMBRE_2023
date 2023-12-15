@@ -1,0 +1,24 @@
+{
+    "Cursos":[
+        {
+            "Codigo": "0770",
+            "Nombre": "Introduccion a la programacion y computacion 1"
+        },
+        {
+            "Codigo": "0771",
+            "Nombre": "Introduccion a la programacion y computacion 2"
+        },
+        {
+            "Codigo": "0772",
+            "Nombre": "Estructura de Datos"
+        },
+        {
+            "Codigo": "0773",
+            "Nombre": "Manejo e implentacion de Archivos"
+        },
+        {
+            "Codigo": "0781",
+            "Nombre": "Organizacion de Lenguajes De Compiladores 2"
+        }
+    ]
+}
