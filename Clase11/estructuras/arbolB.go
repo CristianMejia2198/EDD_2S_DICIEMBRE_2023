@@ -1,11 +1,13 @@
 package estructuras
 
+import "strconv"
+
 type ArbolB struct {
 	Raiz  *RamaB
 	Orden int
 }
 
-func (a *ArbolB) insertar_rama(nodo *NodoB, rama *RamaB) *NodoB { // 20 | 15
+func (a *ArbolB) insertar_rama(nodo *NodoB, rama *RamaB) *NodoB { // 20,
 	if rama.Hoja {
 		rama.Insertar(nodo)
 		if rama.Contador == a.Orden {
@@ -43,7 +45,7 @@ func (a *ArbolB) insertar_rama(nodo *NodoB, rama *RamaB) *NodoB { // 20 | 15
 	return nil
 }
 
-func (a *ArbolB) dividir(rama *RamaB) *NodoB { //rama = ( 15 | 20 | 25 )
+func (a *ArbolB) dividir(rama *RamaB) *NodoB { //rama = ( 10 | 15 | 20 )
 	val := &NodoB{Valor: -9999}                                 // Nodo Temporal
 	aux := rama.Primero                                         //Auxiliar para recorrer la lista
 	rderecha := &RamaB{Primero: nil, Contador: 0, Hoja: true}   //ramas temporales
@@ -52,7 +54,7 @@ func (a *ArbolB) dividir(rama *RamaB) *NodoB { //rama = ( 15 | 20 | 25 )
 	for aux != nil {                                            //Recorrer una rama
 		contador++        //1
 		if contador < 2 { // 15 | 20 | 25 -> i15d
-			temp := &NodoB{Valor: aux.Valor} // NodoB = (valor = 15)
+			temp := &NodoB{Valor: aux.Valor} // NodoB = (valor = 10)
 			temp.Izquierdo = aux.Izquierdo   // temp.izquierdo = 15.izquierdo
 			if contador == 1 {
 				temp.Derecho = aux.Siguiente.Izquierdo
@@ -85,7 +87,7 @@ func (a *ArbolB) dividir(rama *RamaB) *NodoB { //rama = ( 15 | 20 | 25 )
 	return nuevo
 }
 
-func (a *ArbolB) Insertar(valor int) {
+func (a *ArbolB) Insertar(valor int) { //15
 	nuevoNodo := &NodoB{Valor: valor}
 	if a.Raiz == nil {
 		a.Raiz = &RamaB{Primero: nil, Hoja: true, Contador: 0}
@@ -98,4 +100,91 @@ func (a *ArbolB) Insertar(valor int) {
 			a.Raiz.Hoja = false
 		}
 	}
+}
+
+/***************************************/
+func (a *ArbolB) Graficar() {
+	cadena := ""
+	nombre_archivo := "./ArbolB.dot"
+	nombre_imagen := "ArbolB.jpg"
+	if a.Raiz != nil {
+		cadena += "digraph arbol { \nnode[shape=record]\n"
+		cadena += a.grafo(a.Raiz.Primero)
+		cadena += a.conexionRamas(a.Raiz.Primero)
+		cadena += "}"
+	}
+	crearArchivo(nombre_archivo)
+	escribirArchivo(cadena, nombre_archivo)
+	ejecutar(nombre_imagen, nombre_archivo)
+}
+
+func (a *ArbolB) grafo(rama *NodoB) string {
+	dot := ""
+	if rama != nil {
+		dot += a.grafoRamas(rama)
+		aux := rama
+		for aux != nil {
+			if aux.Izquierdo != nil {
+				dot += a.grafo(aux.Izquierdo.Primero)
+			}
+			if aux.Siguiente == nil {
+				if aux.Derecho != nil {
+					dot += a.grafo(aux.Derecho.Primero)
+				}
+			}
+			aux = aux.Siguiente
+		}
+	}
+	return dot
+}
+
+func (a *ArbolB) grafoRamas(rama *NodoB) string {
+	dot := ""
+	if rama != nil {
+		aux := rama
+		dot = dot + "R" + strconv.Itoa(rama.Valor) + "[label=\""
+		r := 1
+		for aux != nil {
+			if aux.Izquierdo != nil {
+				dot = dot + "<C" + strconv.Itoa(r) + ">|"
+				r++
+			}
+			if aux.Siguiente != nil {
+				dot = dot + strconv.Itoa(aux.Valor) + "|"
+			} else {
+				dot = dot + strconv.Itoa(aux.Valor)
+				if aux.Derecho != nil {
+					dot = dot + "|<C" + strconv.Itoa(r) + ">"
+				}
+			}
+			aux = aux.Siguiente
+		}
+		dot = dot + "\"];\n"
+	}
+	return dot
+}
+
+func (a *ArbolB) conexionRamas(rama *NodoB) string {
+	dot := ""
+	if rama != nil {
+		aux := rama
+		actual := "R" + strconv.Itoa(rama.Valor)
+		r := 1
+		for aux != nil {
+			if aux.Izquierdo != nil {
+				dot += actual + ":C" + strconv.Itoa(r) + " -> " + "R" + strconv.Itoa(aux.Izquierdo.Primero.Valor) + ";\n"
+				r++
+				dot += a.conexionRamas(aux.Izquierdo.Primero)
+			}
+			if aux.Siguiente == nil {
+				if aux.Derecho != nil {
+					dot += actual + ":C" + strconv.Itoa(r) + " -> " + "R" + strconv.Itoa(aux.Derecho.Primero.Valor) + ";\n"
+					r++
+					dot += a.conexionRamas(aux.Derecho.Primero)
+				}
+			}
+			aux = aux.Siguiente
+		}
+	}
+	return dot
 }

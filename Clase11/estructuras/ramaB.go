@@ -13,26 +13,33 @@ func (r *RamaB) Insertar(nuevoNodo *NodoB) {
 	} else {
 		if nuevoNodo.Valor < r.Primero.Valor { // 7 | 10
 			nuevoNodo.Siguiente = r.Primero
-			nuevoNodo.Derecho = r.Primero.Izquierdo
+			r.Primero.Izquierdo = nuevoNodo.Derecho
+			//nuevoNodo.Derecho = nil
 			r.Primero.Anterior = nuevoNodo
 			r.Primero = nuevoNodo
 			r.Contador++
-		} else if r.Primero.Siguiente != nil { // 7 | 10 -> 9
+		} else if r.Primero.Siguiente != nil { // 7 | 9 | 10 -> 9
 			if r.Primero.Siguiente.Valor > nuevoNodo.Valor {
 				nuevoNodo.Siguiente = r.Primero.Siguiente
 				nuevoNodo.Anterior = r.Primero
-				nuevoNodo.Derecho = r.Primero.Siguiente.Izquierdo
-				nuevoNodo.Izquierdo = r.Primero.Derecho
+				r.Primero.Siguiente.Izquierdo = nuevoNodo.Derecho
+				//nuevoNodo.Derecho = nil
+				r.Primero.Derecho = nuevoNodo.Izquierdo
 				r.Primero.Siguiente.Anterior = nuevoNodo
 				r.Primero.Siguiente = nuevoNodo
 				r.Contador++
 			} else { // 7 | 10 -> 15
 				aux := r.Primero.Siguiente
 				nuevoNodo.Anterior = aux
-				nuevoNodo.Izquierdo = aux.Derecho
+				aux.Derecho = nuevoNodo.Izquierdo
 				aux.Siguiente = nuevoNodo
 				r.Contador++
 			}
+		} else if r.Primero.Siguiente == nil {
+			nuevoNodo.Anterior = r.Primero
+			r.Primero.Derecho = nuevoNodo.Izquierdo
+			r.Primero.Siguiente = nuevoNodo
+			r.Contador++
 		}
 	}
 }
