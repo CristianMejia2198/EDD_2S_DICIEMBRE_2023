@@ -1,0 +1,8 @@
+digraph arbol { 
+node[shape=record]
+R8[label="<C1>|8|<C2>"];
+R6[label="6"];
+R15[label="15|20"];
+R8:C1 -> R6;
+R8:C2 -> R15;
+}
