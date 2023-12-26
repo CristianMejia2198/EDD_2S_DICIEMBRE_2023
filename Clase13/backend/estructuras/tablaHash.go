@@ -22,15 +22,19 @@ type TablaHash struct {
 }
 
 func (t *TablaHash) calculoIndice(carnet int) int {
-	var numeros []int //2017 -> [2 0 1 7]
+	var numeros []int //201700001 -> [2 0 1 7 0 0 0 0 1]
 	// Convertir el numero en array
-	if carnet > 0 {
-		digito := carnet % 10
-		numeros = append([]int{digito}, numeros...)
-		carnet = carnet / 10
+	for {
+		if carnet > 0 {
+			digito := carnet % 10
+			numeros = append([]int{digito}, numeros...)
+			carnet = carnet / 10
+		} else {
+			break
+		}
 	}
 
-	//Convertir array de numeros en Codigo ascii
+	//Convertir array de numeros en Codigo ascii -> [1]
 	var numeros_ascii []rune
 	for _, numero := range numeros {
 		valor := rune(numero + 48)
