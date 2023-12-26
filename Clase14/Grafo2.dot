@@ -1,0 +1,35 @@
+digraph grafoDirigido{ 
+ rankdir=LR; 
+ node [shape=box]; layout=neato; 
+ nodoECYS[label="ECYS"]; 
+node [shape = ellipse]; 
+nodo0770[label="0770" ]; 
+nodo0771[label="0771" ]; 
+nodo0796[label="0796" ]; 
+nodo0962[label="0962" ]; 
+nodo0770[label="0770" ]; 
+nodo0771[label="0771" ]; 
+nodo0772[label="0772" ]; 
+nodo0964[label="0964" ]; 
+nodo0777[label="0777" ]; 
+nodo0771[label="0771" ]; 
+nodo0772[label="0772" ]; 
+nodo0722[label="0722" ]; 
+nodo0781[label="0781" ]; 
+nodo0772[label="0772" ]; 
+nodo0777[label="0777" ]; 
+nodo0781[label="0781" ]; 
+nodo0960[label="0960" ]; 
+nodoECYS -> nodo0770[len=1.00]; 
+nodoECYS -> nodo0960[len=1.00]; 
+nodo0770 -> nodo0771[len=1.00]; 
+nodo0770 -> nodo0796[len=1.00]; 
+nodo0770 -> nodo0962[len=1.00]; 
+nodo0771 -> nodo0772[len=1.00]; 
+nodo0771 -> nodo0964[len=1.00]; 
+nodo0771 -> nodo0777[len=1.00]; 
+nodo0772 -> nodo0722[len=1.00]; 
+nodo0772 -> nodo0781[len=1.00]; 
+nodo0777 -> nodo0781[len=1.00]; 
+
+}

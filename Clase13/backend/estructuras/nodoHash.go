@@ -10,3 +10,8 @@ type NodoHash struct {
 	Llave   int
 	Persona *Persona
 }
+
+type PeticionLogin struct {
+	UserName string
+	Passwrod string
+}

@@ -3,7 +3,29 @@ package main
 import (
 	"Clase13/estructuras"
 	"fmt"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
+
+func Validar(c *fiber.Ctx) error {
+	var usuario estructuras.PeticionLogin
+	c.BodyParser(&usuario)
+	if usuario.UserName == "ADMIN_201700918" {
+		if usuario.Passwrod == "admin" {
+			return c.JSON(&fiber.Map{
+				"status":  200,
+				"message": "Credenciales Correctas",
+			})
+		}
+	} else {
+		//Validar Carnet
+	}
+	return c.JSON(&fiber.Map{
+		"status":  400,
+		"message": "Credenciales incorrectas",
+	})
+}
 
 func main() {
 	tablitaHash := estructuras.TablaHash{Tabla: make(map[int]estructuras.NodoHash), Capacidad: 7, Utilizacion: 0}
@@ -26,4 +48,9 @@ func main() {
 			fmt.Println("Llave: ", usuario.Llave, " Carnet: ", usuario.Persona.Carnet)
 		}
 	}
+	app := fiber.New()
+	app.Use(cors.New())
+	app.Post("/login-server", Validar)
+
+	app.Listen(":4000")
 }
