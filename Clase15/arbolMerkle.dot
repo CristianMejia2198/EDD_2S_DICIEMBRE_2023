@@ -1,0 +1,111 @@
+digraph arbol { node [shape=box];"7afabe08aba058983765" [dir=back];
+"7afabe08aba058983765" -> "456f9516c8c90336e054" [dir=back];
+"456f9516c8c90336e054" -> "a37f45aee1e6731d29af" [dir=back];
+"a37f45aee1e6731d29af" -> "44dd5976c928642d190c" [dir=back];
+"44dd5976c928642d190c" -> "f88dd55b0b895d069803" [dir=back];
+"f88dd55b0b895d069803" -> "27-12-2023::12:53:17
+Aceptado
+Libro1
+201700918" [dir=back];
+ "44dd5976c928642d190c" -> "2868dfb1e63f458fe25e" [dir=back];
+"2868dfb1e63f458fe25e" -> "27-12-2023::12:53:17
+Rechazado
+Libro2
+201700918" [dir=back];
+ {rank=same"f88dd55b0b895d069803" -> "2868dfb1e63f458fe25e" [style=invis]}; 
+"a37f45aee1e6731d29af" -> "f0fc9c40b2452a6f1be6" [dir=back];
+"f0fc9c40b2452a6f1be6" -> "b8e0dafc7373b8db9b2c" [dir=back];
+"b8e0dafc7373b8db9b2c" -> "27-12-2023::12:53:17
+Aceptado
+Libro3
+201700918" [dir=back];
+ "f0fc9c40b2452a6f1be6" -> "b0e25d772d5c8f33f436" [dir=back];
+"b0e25d772d5c8f33f436" -> "27-12-2023::12:53:17
+Aceptado
+Libro4
+201700918" [dir=back];
+ {rank=same"b8e0dafc7373b8db9b2c" -> "b0e25d772d5c8f33f436" [style=invis]}; 
+{rank=same"44dd5976c928642d190c" -> "f0fc9c40b2452a6f1be6" [style=invis]}; 
+"456f9516c8c90336e054" -> "d2fa89b6beabc248d368" [dir=back];
+"d2fa89b6beabc248d368" -> "42721b80db30450de78e" [dir=back];
+"42721b80db30450de78e" -> "d588faf679ec95adac15" [dir=back];
+"d588faf679ec95adac15" -> "27-12-2023::12:53:17
+Rechazado
+Libro5
+201700918" [dir=back];
+ "42721b80db30450de78e" -> "24728409cd31a10104f4" [dir=back];
+"24728409cd31a10104f4" -> "27-12-2023::12:53:17
+Aceptado
+Libro6
+201700918" [dir=back];
+ {rank=same"d588faf679ec95adac15" -> "24728409cd31a10104f4" [style=invis]}; 
+"d2fa89b6beabc248d368" -> "f425f7c4210183ac94d4" [dir=back];
+"f425f7c4210183ac94d4" -> "301640ec2a7f191c7239" [dir=back];
+"301640ec2a7f191c7239" -> "27-12-2023::12:53:17
+Aceptado
+Libro7
+201700918" [dir=back];
+ "f425f7c4210183ac94d4" -> "79b626dc514fc5a87ec1" [dir=back];
+"79b626dc514fc5a87ec1" -> "27-12-2023::12:53:17
+Aceptado
+Libro8
+201700918" [dir=back];
+ {rank=same"301640ec2a7f191c7239" -> "79b626dc514fc5a87ec1" [style=invis]}; 
+{rank=same"42721b80db30450de78e" -> "f425f7c4210183ac94d4" [style=invis]}; 
+{rank=same"a37f45aee1e6731d29af" -> "d2fa89b6beabc248d368" [style=invis]}; 
+"7afabe08aba058983765" -> "b977b7702e0704a59512" [dir=back];
+"b977b7702e0704a59512" -> "44964cb32f3d9ed3bf10" [dir=back];
+"44964cb32f3d9ed3bf10" -> "d470e19214e895302a48" [dir=back];
+"d470e19214e895302a48" -> "6744726fa659c0b25236" [dir=back];
+"6744726fa659c0b25236" -> "27-12-2023::12:53:17
+Aceptado
+Libro9
+201700918" [dir=back];
+ "d470e19214e895302a48" -> "a3f0dd6fb36c966faca8" [dir=back];
+"a3f0dd6fb36c966faca8" -> "27-12-2023::12:53:17
+9
+nulo
+0" [dir=back];
+ {rank=same"6744726fa659c0b25236" -> "a3f0dd6fb36c966faca8" [style=invis]}; 
+"44964cb32f3d9ed3bf10" -> "88cc72ff11e7b8d21071" [dir=back];
+"88cc72ff11e7b8d21071" -> "cc070cec93960230cddb" [dir=back];
+"cc070cec93960230cddb" -> "27-12-2023::12:53:17
+10
+nulo
+0" [dir=back];
+ "88cc72ff11e7b8d21071" -> "ca6ab21dc0f0d3fce9f5" [dir=back];
+"ca6ab21dc0f0d3fce9f5" -> "27-12-2023::12:53:17
+11
+nulo
+0" [dir=back];
+ {rank=same"cc070cec93960230cddb" -> "ca6ab21dc0f0d3fce9f5" [style=invis]}; 
+{rank=same"d470e19214e895302a48" -> "88cc72ff11e7b8d21071" [style=invis]}; 
+"b977b7702e0704a59512" -> "77ce1f8d70b3b1a059ee" [dir=back];
+"77ce1f8d70b3b1a059ee" -> "c35e8902e355990740c2" [dir=back];
+"c35e8902e355990740c2" -> "6eaf9b55072c29f4cb20" [dir=back];
+"6eaf9b55072c29f4cb20" -> "27-12-2023::12:53:17
+12
+nulo
+0" [dir=back];
+ "c35e8902e355990740c2" -> "5828671e1410429957f9" [dir=back];
+"5828671e1410429957f9" -> "27-12-2023::12:53:17
+13
+nulo
+0" [dir=back];
+ {rank=same"6eaf9b55072c29f4cb20" -> "5828671e1410429957f9" [style=invis]}; 
+"77ce1f8d70b3b1a059ee" -> "8a3695abb31be044dc57" [dir=back];
+"8a3695abb31be044dc57" -> "b0f9f9e60b16875a50d9" [dir=back];
+"b0f9f9e60b16875a50d9" -> "27-12-2023::12:53:17
+14
+nulo
+0" [dir=back];
+ "8a3695abb31be044dc57" -> "aaa06a24a405f389859e" [dir=back];
+"aaa06a24a405f389859e" -> "27-12-2023::12:53:17
+15
+nulo
+0" [dir=back];
+ {rank=same"b0f9f9e60b16875a50d9" -> "aaa06a24a405f389859e" [style=invis]}; 
+{rank=same"c35e8902e355990740c2" -> "8a3695abb31be044dc57" [style=invis]}; 
+{rank=same"44964cb32f3d9ed3bf10" -> "77ce1f8d70b3b1a059ee" [style=invis]}; 
+{rank=same"456f9516c8c90336e054" -> "b977b7702e0704a59512" [style=invis]}; 
+}
