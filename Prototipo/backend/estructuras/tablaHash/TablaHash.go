@@ -83,7 +83,7 @@ func (t *TablaHash) nuevoIndice(nuevoIndice int) int {
 	return nuevoPosicion
 }
 
-func (t *TablaHash) Insertar(carnet int, nombre string, password string) {
+func (t *TablaHash) Insertar(carnet int, nombre string, password string) { // cursos []string
 	indice := t.calculoIndice(carnet)
 	nuevoNodo := &NodoHash{Llave: indice, Persona: &Persona{Carnet: carnet, Nombre: nombre, Password: password}}
 	if indice < t.Capacidad {
@@ -145,4 +145,16 @@ func (t *TablaHash) Buscar(carnet string, password string) bool {
 		}
 	}
 	return false
+}
+
+func (t *TablaHash) ConvertirArreglo() []NodoHash {
+	var arrays []NodoHash
+	if t.Utilizacion > 0 {
+		for i := 0; i < t.Capacidad; i++ {
+			if usuario, existe := t.Tabla[i]; existe {
+				arrays = append(arrays, usuario)
+			}
+		}
+	}
+	return arrays
 }
