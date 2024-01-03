@@ -10,6 +10,8 @@ import Cargar_Libro from "./pages/Tutor/Cargar_Libro";
 import Carga_Publicacion from "./pages/Tutor/Carga_Publicacion";
 import Principal_Estudiante from "./pages/Estudiante/Principal_Estudiante";
 import Reporte from "./pages/Administrador/Reporte";
+import Cursos_Estudiante from "./pages/Estudiante/Cursos_Estudiante";
+import Publicacion_Estudiante from "./pages/Estudiante/Publicacion_Estudiante";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -50,6 +52,14 @@ function App() {
         <Route
           path="/principal/estudiante"
           element={<Principal_Estudiante />}
+        />
+        <Route
+          path="/principal/estudiante/libro"
+          element={<Cursos_Estudiante />}
+        />
+        <Route
+          path="/principal/estudiante/publicacion"
+          element={<Publicacion_Estudiante />}
         />
       </Routes>
     </>

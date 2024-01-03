@@ -279,7 +279,7 @@ func (a *ArbolB) VerLibroAdmin(raiz *NodoB, listaSimple *ListaSimple) {
 			if aux.Izquierdo != nil {
 				a.VerLibroAdmin(aux.Izquierdo.Primero, listaSimple)
 			}
-			if len(aux.Valor.Curso) > 0 {
+			if len(aux.Valor.Libros) > 0 {
 				listaSimple.Insertar(aux)
 			}
 			if aux.Siguiente == nil {

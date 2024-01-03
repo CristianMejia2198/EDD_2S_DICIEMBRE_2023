@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function Principal_Estudiante() {
+function Publicacion_Estudiante() {
   const [cursos, setCursos] = useState([]);
+  const [publicacion, setPublicacion] = useState([]);
 
   useEffect(() => {
     async function PedirCursos() {
-      const valorLocal = localStorage.getItem("user");
-      const response = await fetch("http://localhost:4000/obtener-clases", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Carnet: valorLocal,
-        }),
-      });
+      const arregloCursos = localStorage.getItem("cursos");
+      const cursosArreglo = JSON.parse(arregloCursos);
+      const response = await fetch(
+        "http://localhost:4000/obtener-publi-alumno"
+      );
       const result = await response.json();
       console.log(result);
-      setCursos(result.Arreglo);
+      setCursos(cursosArreglo);
+      if (result.status === 200) {
+        setPublicacion(result.Arreglo);
+      }
     }
     PedirCursos();
   }, []);
@@ -39,6 +38,17 @@ function Principal_Estudiante() {
                       id="validationTooltipUsernamePrepend"
                     ></span>{" "}
                     <br />
+                    {publicacion.map((ite, j) => {
+                      if (ite.Curso === item) {
+                        return (
+                          <div key={"p-" + i}>
+                            <label className="input-group-text" key={"lib" + j}>
+                              {ite.Contenido}
+                            </label>
+                          </div>
+                        );
+                      }
+                    })}
                   </div>
                 </div>
                 <br />
@@ -57,23 +67,21 @@ function Principal_Estudiante() {
     window.open("/", "_self");
   };
 
-  const publicaciones = (e) => {
-    e.preventDefault();
-    localStorage.setItem("cursos", JSON.stringify(cursos));
-    window.open("/principal/estudiante/publicacion", "_self");
-  };
-
   const libro = (e) => {
     e.preventDefault();
-    localStorage.setItem("cursos", JSON.stringify(cursos));
     window.open("/principal/estudiante/libro", "_self");
+  };
+
+  const principal = (e) => {
+    e.preventDefault();
+    window.open("/principal/estudiante", "_self");
   };
 
   return (
     <div className="form-signin1">
       <div className="text-center">
         <form className="card card-body">
-          <h1 className="h3 mb-3 fw-normal">Alumno - Clases</h1>
+          <h1 className="h3 mb-3 fw-normal">Alumno - Publicaciones</h1>
           <br />
           <br />
           <center>
@@ -83,17 +91,17 @@ function Principal_Estudiante() {
           </center>
           <br />
           <center>
-            <button className="w-50 btn btn-outline-success" onClick={libro}>
-              Ver Libros
+            <button
+              className="w-50 btn btn-outline-success"
+              onClick={principal}
+            >
+              Principal
             </button>
           </center>
           <br />
           <center>
-            <button
-              className="w-50 btn btn-outline-success"
-              onClick={publicaciones}
-            >
-              Ver Publicaciones
+            <button className="w-50 btn btn-outline-success" onClick={libro}>
+              Ver Libros
             </button>
           </center>
           <br />
@@ -107,4 +115,4 @@ function Principal_Estudiante() {
   );
 }
 
-export default Principal_Estudiante;
+export default Publicacion_Estudiante;

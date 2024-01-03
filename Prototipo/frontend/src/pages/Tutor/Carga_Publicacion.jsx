@@ -23,10 +23,17 @@ function Carga_Publicacion() {
     const result = await response.json();
   };
 
-  const salir = (e) => {
+  const irpdf = (e) => {
     e.preventDefault();
     console.log("Listo");
     window.open("/principal/tutor", "_self");
+  };
+
+  const salir = (e) => {
+    e.preventDefault();
+    console.log("Listo");
+    localStorage.clear();
+    window.open("/", "_self");
   };
 
   return (
@@ -38,8 +45,14 @@ function Carga_Publicacion() {
           <h4 className="h3 mb-3 fw-normal">Cargar PDF</h4>
           <br />
           <center>
+            <button className="w-50 btn btn-outline-primary" onClick={irpdf}>
+              PDFS
+            </button>
+          </center>
+          <br />
+          <center>
             <button className="w-50 btn btn-outline-primary" onClick={salir}>
-              PDF
+              Cerrar Sesion
             </button>
           </center>
           <br />

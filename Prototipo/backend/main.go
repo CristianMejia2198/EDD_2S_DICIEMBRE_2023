@@ -40,6 +40,9 @@ func main() {
 	app.Post("/registrar-publicacion", GuardarPublicacion)
 	app.Post("/registrar-log", RegistrarDecision)
 	app.Post("/obtener-clases", CursosAlumnos)
+	app.Get("/obtener-libros-alumno", ObetnerLibrosAlumno)
+	app.Get("/obtener-publi-alumno", ObetnerPublicacionessAlumno)
+	app.Get("/finalizar-libros", FinalizarLibros)
 
 	/*EJEMPLO DE REPORTE MANDAR A LLAMAR LOS DEMAS, FUNCIONES YA HECHAS*/
 	app.Get("/reporte-arbol", ReporteArbolB)
@@ -160,7 +163,9 @@ func ObtenerLibrosAdmin(c *fiber.Ctx) error {
 		aux := listatemp.Inicio
 		for aux != nil {
 			for i := 0; i < len(aux.Tutor.Valor.Libros); i++ {
-				libros = append(libros, *aux.Tutor.Valor.Libros[i])
+				if aux.Tutor.Valor.Libros[i].Estado == 1 {
+					libros = append(libros, *aux.Tutor.Valor.Libros[i])
+				}
 			}
 			aux = aux.Siguiente
 		}
@@ -266,5 +271,64 @@ func ReporteMerkle(c *fiber.Ctx) error {
 	return c.JSON(&fiber.Map{
 		"status": 200,
 		"imagen": imagen,
+	})
+}
+
+func ObetnerLibrosAlumno(c *fiber.Ctx) error {
+	listatemp := &arbolB.ListaSimple{Inicio: nil, Longitud: 0}
+	var libros []arbolB.Libro
+	arbolTutor.VerLibroAdmin(arbolTutor.Raiz.Primero, listatemp)
+	if listatemp.Longitud > 0 {
+		aux := listatemp.Inicio
+		for aux != nil {
+			for i := 0; i < len(aux.Tutor.Valor.Libros); i++ {
+				if aux.Tutor.Valor.Libros[i].Estado == 2 {
+					libros = append(libros, *aux.Tutor.Valor.Libros[i])
+				}
+			}
+			aux = aux.Siguiente
+		}
+
+	}
+	if len(libros) > 0 {
+		return c.JSON(&fiber.Map{
+			"status":  200,
+			"Arreglo": libros,
+		})
+	}
+	return c.JSON(&fiber.Map{
+		"status": 500,
+	})
+}
+
+func ObetnerPublicacionessAlumno(c *fiber.Ctx) error {
+	listatemp := &arbolB.ListaSimple{Inicio: nil, Longitud: 0}
+	var publi []arbolB.Publicacion
+	arbolTutor.VerLibroAdmin(arbolTutor.Raiz.Primero, listatemp)
+	if listatemp.Longitud > 0 {
+		aux := listatemp.Inicio
+		for aux != nil {
+			for i := 0; i < len(aux.Tutor.Valor.Publicaciones); i++ {
+				publi = append(publi, *aux.Tutor.Valor.Publicaciones[i])
+			}
+			aux = aux.Siguiente
+		}
+
+	}
+	if len(publi) > 0 {
+		return c.JSON(&fiber.Map{
+			"status":  200,
+			"Arreglo": publi,
+		})
+	}
+	return c.JSON(&fiber.Map{
+		"status": 500,
+	})
+}
+
+func FinalizarLibros(c *fiber.Ctx) error {
+	arbolLibros.GenerarArbol()
+	return c.JSON(&fiber.Map{
+		"status": 200,
 	})
 }

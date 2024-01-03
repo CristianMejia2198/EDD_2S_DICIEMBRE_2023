@@ -34,10 +34,17 @@ function Cargar_Libro() {
     reader.readAsDataURL(file);
   };
 
-  const salir = (e) => {
+  const hacerpubli = (e) => {
     e.preventDefault();
     console.log("Listo");
     window.open("/principal/tutor/publicacion", "_self");
+  };
+
+  const salir = (e) => {
+    e.preventDefault();
+    console.log("Listo");
+    localStorage.clear();
+    window.open("/", "_self");
   };
 
   return (
@@ -47,8 +54,17 @@ function Cargar_Libro() {
           <h1 className="h3 mb-3 fw-normal">Libros Tutor</h1>
           <br />
           <center>
-            <button className="w-50 btn btn-outline-primary" onClick={salir}>
+            <button
+              className="w-50 btn btn-outline-primary"
+              onClick={hacerpubli}
+            >
               Publicacion
+            </button>
+          </center>
+          <br />
+          <center>
+            <button className="w-50 btn btn-outline-primary" onClick={salir}>
+              Cerrar Sesion
             </button>
           </center>
           <br />
