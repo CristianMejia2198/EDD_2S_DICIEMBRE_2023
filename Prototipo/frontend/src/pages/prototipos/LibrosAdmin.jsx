@@ -37,7 +37,7 @@ function LibrosAdmin() {
     <div className="form-signin1">
       <div className="text-center">
         <form className="card card-body">
-          <h1 className="h3 mb-3 fw-normal">Administrador</h1>
+          <h1 className="h3 mb-3 fw-normal">Libros Tutor</h1>
           <br />
           <h4 className="h3 mb-3 fw-normal">Cargar PDF</h4>
           <br />

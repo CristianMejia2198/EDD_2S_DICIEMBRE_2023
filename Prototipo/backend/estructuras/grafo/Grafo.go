@@ -62,8 +62,8 @@ func (g *Grafo) InsertarValores(curso string, post string) {
 
 func (g *Grafo) Reporte(nombre string) {
 	cadena := ""
-	nombre_archivo := "./" + nombre + ".dot"
-	nombre_imagen := nombre + ".jpg"
+	nombre_archivo := "./Reporte/" + nombre + ".dot"
+	nombre_imagen := "./Reporte/" + nombre + ".jpg"
 	if g.Principal != nil {
 		cadena += "digraph grafoDirigido{ \n rankdir=LR; \n node [shape=box]; layout=neato; \n nodo" + g.Principal.Valor + "[label=\"" + g.Principal.Valor + "\"]; \n"
 		cadena += "node [shape = ellipse]; \n"

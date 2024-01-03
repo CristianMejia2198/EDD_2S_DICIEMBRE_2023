@@ -29,7 +29,7 @@ function Login() {
       localStorage.setItem("Tipo", "1");
       localStorage.setItem("user", userName);
     } else if (result.rol == 2) {
-      window.open("/principal/tutor/libro", "_self");
+      window.open("/principal/tutor", "_self");
       localStorage.setItem("Tipo", "2");
       localStorage.setItem("user", userName);
     } else if (result.rol == 3) {

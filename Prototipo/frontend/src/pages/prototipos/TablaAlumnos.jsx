@@ -17,7 +17,9 @@ function TablaAlumnos() {
         <form className="card card-body">
           <h1 className="h3 mb-3 fw-normal">Administrador</h1>
           <br />
-          <h4 className="h3 mb-3 fw-normal">Cargar Archivos</h4>
+          <h4 className="h3 mb-3 fw-normal">
+            Alumnos Registrados en el Sistemas
+          </h4>
           <br />
           <br />
           <table className="table table-dark table-striped">

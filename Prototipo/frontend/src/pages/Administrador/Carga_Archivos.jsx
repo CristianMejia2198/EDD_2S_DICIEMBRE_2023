@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Administrador() {
+function Carga_Archivos() {
   const reportes = (e) => {
     e.preventDefault();
     window.open("/principal/admin/alumnos", "_self");
@@ -110,7 +110,7 @@ function Administrador() {
   const salir = (e) => {
     e.preventDefault();
     console.log("Listo");
-    window.open("/", "_self");
+    window.open("/principal/admin", "_self");
   };
 
   return (
@@ -155,20 +155,8 @@ function Administrador() {
           </div>
           <br />
           <center>
-            <button className="w-50 btn btn-outline-primary" onClick={reportes}>
-              Tabla
-            </button>
-          </center>
-          <br />
-          <center>
-            <button className="w-50 btn btn-outline-primary" onClick={reportes}>
-              Alumnos
-            </button>
-          </center>
-          <br />
-          <center>
             <button className="w-50 btn btn-outline-success" onClick={salir}>
-              Salir
+              Regresar
             </button>
           </center>
           <p className="mt-5 mb-3 text-muted">EDD 201700918</p>
@@ -179,4 +167,4 @@ function Administrador() {
   );
 }
 
-export default Administrador;
+export default Carga_Archivos;

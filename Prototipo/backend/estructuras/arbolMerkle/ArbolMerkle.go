@@ -98,8 +98,8 @@ func (a *ArbolMerkle) encriptarSha3(cadena string) string {
 /*******************************************/
 func (a *ArbolMerkle) Graficar() {
 	cadena := ""
-	nombre_archivo := "./arbolMerkle.dot"
-	nombre_imagen := "arbolMerkle.jpg"
+	nombre_archivo := "./Reporte/arbolMerkle.dot"
+	nombre_imagen := "./Reporte/arbolMerkle.jpg"
 	if a.RaizMerkle != nil {
 		cadena += "digraph arbol { node [shape=box];"
 		cadena += a.retornarValoresArbol(a.RaizMerkle, 0)

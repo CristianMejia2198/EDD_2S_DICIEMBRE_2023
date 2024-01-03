@@ -4,9 +4,12 @@ type Libro struct {
 	Nombre    string
 	Contenido string
 	Estado    int
+	Curso     string
+	Tutor     int
 }
 type Publicacion struct {
 	Contenido string
+	Curso     string
 }
 
 type Tutores struct {

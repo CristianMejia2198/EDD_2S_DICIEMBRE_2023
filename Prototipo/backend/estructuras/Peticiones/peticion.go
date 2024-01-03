@@ -37,5 +37,23 @@ type PeticionLibro struct {
 
 type PeticionPublicacion struct {
 	Carnet    int
+	Nombre    string
 	Contenido string
+}
+
+type PeticionDecision struct {
+	Accion string
+	Nombre string
+	Tutor  int
+	Curso  string
+}
+
+type PeticionAlumnoSesion struct {
+	Carnet string
+	Cursos []string
+}
+
+type RespuestaImagen struct {
+	Imagenbase64 string
+	Nombre       string
 }
